@@ -16,7 +16,6 @@ abstract class Mammifere
 {
     protected $speed; 
 
-
     function __construct($speed) 
     {
         $this->speed = $speed;  

@@ -7,6 +7,14 @@ class Chien extends Mammifere
         parent::__construct(-10, 30);   
     }
 
+    function getType()
+    {
+        $suffixe = "";
+        if($this->sick){
+            $suffixe = "(malade)";
+        }
+        return "Test pour Chien$suffixe"; 
+    }
 }
 
 // $saleChien = new Chien();
