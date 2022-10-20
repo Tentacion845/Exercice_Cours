@@ -2,12 +2,15 @@
 require "mammifere.php";
 require "chien.php";
 require "chat.php";
-
+require "souris.php";
+require "biche.php";
+require "generators.php";
+require "bear.php";
 
 class Environnement 
 {
     protected array $temperatures;
-    protected array $mammiferes;
+    public array $mammiferes;
     
 
 
@@ -61,7 +64,40 @@ class Environnement
         }
     }
 
-    
+
+    function mammifereRace()
+    {
+        foreach ($this->temperatures as $temperature){
+            echo "temperatures  $temperature <br>";
+            $count = 0; 
+            $races = [];
+           foreach ($this->mammiferes as $mammifere) { 
+
+                if (!isset($races[$mammifere->getType()])) {
+                    
+                    $races [$mammifere->getType()] = 0;
+                }
+
+            //  $races [] = $mammifere->getType();
+
+                if ($mammifere->isGoodTemperature($temperature)){
+                    $count ++;
+                    $races [$mammifere->getType()] ++;
+                } 
+            } 
+            echo "population :" . $count . "<br>";
+            if ($count === 0) {
+                echo "il n'y pas d'animaux" . "<br>";
+            } else {
+                foreach ($races as $race => $count){
+                    echo $race  . " " . ":" . $count . "<br>";
+                    // echo $race . "<br>" ;
+              
+                }
+            }
+       }
+    }
+
 
     
 }
@@ -71,17 +107,29 @@ class Environnement
 $environnement = new Environnement();
 $chien = new Chien();
 $chat = new Chat();
+$tom = new Chat();
 $saleChien = new Chien();
+$jerry = new Souris();
+
+// $environnement->addMammifere($tom);
+// $environnement->addMammifere($chat);
+// $environnement->addMammifere($chien);
+// $environnement->addMammifere($saleChien);
+// $environnement->addMammifere($jerry);
+
+// $environnement->isSick();
 
 
-$environnement->addMammifere($chat);
-$environnement->addMammifere($chien);
-$environnement->addMammifere($saleChien);
-
-$environnement->countMammifereTemperatures();
+// $environnement->countMammifereTemperatures();
 // var_dump($environnement->getMammiferes());
 
+Generators::generateMammifere($environnement, 100);
+$environnement->mammifereRace();
 
 
+echo ("localhost")
+echo ("localhost/?controller=Default")
+echo ("localhost/?controller=Default&action=index")
+echo ("localhost/?action=index")
 
 ?>

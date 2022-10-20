@@ -1,13 +1,11 @@
 <?php
 
-
-class Chat extends Mammifere
+class Biche extends Mammifere
 {
-    function __construct()
+    function __construct() 
     {
-        parent::__construct(-20, 25);
+        parent::__construct(-15, 35);   
     }
-
 
     function getType()
     {
@@ -15,16 +13,8 @@ class Chat extends Mammifere
         if($this->sick){
             $suffixe = "(malade)";
         }
-        return "Test pour Chat$suffixe"; 
+        return "Test pour Biche$suffixe"; 
     }
-
-
-
 }
-
-
-
-
-
 
 ?>
